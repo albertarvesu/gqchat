@@ -29,12 +29,17 @@ class AddChannel extends Component {
     this.props
       .mutate({
         variables: { name: this.state.channelName },
+        optimisticResponse: {
+          __typename: "Mutation",
+          addChannel: {
+            name: this.state.channelName,
+            id: Math.round(Math.random() * -1000000),
+            __typename: "Channel"
+          }
+        },
         update: (store, { data: { addChannel } }) => {
-          // Read the data from the cache for this query.
           const data = store.readQuery({ query: channelsListQuery });
-          // Add our channel from the mutation to the end.
           data.channels.push(addChannel);
-          // Write the data back to the cache.
           store.writeQuery({ query: channelsListQuery, data });
         }
       })
