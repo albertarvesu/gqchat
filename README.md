@@ -18,7 +18,7 @@ Original tutorial came from https://dev-blog.apollodata.com/full-stack-react-gra
 1.  Prettier
 1.  react-app-env
 
-## TODO
+## Todo
 
 1.  Persist channels and message via Mongo or MySQL
 2.  Add timestamp when the channel and message was created
