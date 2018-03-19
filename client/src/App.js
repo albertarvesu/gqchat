@@ -31,14 +31,17 @@ const hasSubscriptionOperation = ({ query: { definitions } }) =>
       kind === "OperationDefinition" && operation === "subscription"
   );
 
+const apiHost = process.env.REACT_APP_API_HOST;
+const apiPort = process.env.REACT_APP_API_PORT;
+
 const link = ApolloLink.split(
   hasSubscriptionOperation,
   new WebSocketLink({
-    uri: "ws://localhost:3001/subscriptions",
+    uri: `ws://${apiHost}:${apiPort}/subscriptions`,
     options: { reconnect: true }
   }),
   new HttpLink({
-    uri: "http://localhost:3001/graphql"
+    uri: `http://${apiHost}:${apiPort}/graphql`
   })
 );
 
