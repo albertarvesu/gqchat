@@ -24,6 +24,7 @@ class AddChannel extends Component {
   onCreate() {
     if (!this.state.channelName) {
       message.error("Channel name is required");
+      return;
     }
 
     this.props
@@ -34,6 +35,7 @@ class AddChannel extends Component {
           addChannel: {
             name: this.state.channelName,
             id: Math.round(Math.random() * -1000000),
+            messages: [],
             __typename: "Channel"
           }
         },

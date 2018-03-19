@@ -4,6 +4,10 @@ import express from "express";
 import { graphqlExpress, graphiqlExpress } from "graphql-server-express";
 import bodyParser from "body-parser";
 
+import { execute, subscribe } from "graphql";
+import { createServer } from "http";
+import { SubscriptionServer } from "subscriptions-transport-ws";
+
 import { schema } from "./src/schema";
 
 const PORT = process.env.PORT || 3001;
@@ -24,19 +28,27 @@ server.use(
 server.use(
   "/graphiql",
   graphiqlExpress({
-    endpointURL: "/graphql"
+    endpointURL: "/graphql",
+    subscriptionsEndpoint: `ws://localhost:${PORT}/subscriptions`
   })
 );
 
-// server.use(function(req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type, Accept"
-//   );
-//   next();
-// });
+// We wrap the express server so that we can attach the WebSocket for subscriptions
+const ws = createServer(server);
 
-server.listen(PORT, () =>
-  console.log(`GraphQL Server is now running on http://localhost:${PORT}`)
-);
+ws.listen(PORT, () => {
+  console.log(`GraphQL Server is now running on http://localhost:${PORT}`);
+
+  // Set up the WebSocket for handling GraphQL subscriptions
+  new SubscriptionServer(
+    {
+      execute,
+      subscribe,
+      schema
+    },
+    {
+      server: ws,
+      path: "/subscriptions"
+    }
+  );
+});

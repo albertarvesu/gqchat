@@ -13,6 +13,11 @@ const typeDefs = `
     text: String
   }
 
+  input MessageInput {
+    channelId: ID!
+    text: String
+  }
+
   type Query {
      channels: [Channel]
      channel(id: ID!): Channel
@@ -20,6 +25,11 @@ const typeDefs = `
 
   type Mutation {
     addChannel(name: String!): Channel
+    addMessage(message: MessageInput!): Message
+  }
+
+  type Subscription {
+    messageAdded(channelId: ID!): Message
   }
 `;
 

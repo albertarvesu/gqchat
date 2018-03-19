@@ -8,7 +8,9 @@
     "apollo-client": "^2.2.7",
     "apollo-link": "^1.2.1",
     "apollo-link-http": "^1.5.3",
+    "apollo-link-ws": "^1.0.7",
     "apollo-test-utils": "^0.3.2",
+    "apollo-utilities": "^1.0.10",
     "graphql": "^0.13.1",
     "graphql-tag": "^2.8.0",
     "graphql-tools": "^2.22.0",
@@ -19,7 +21,8 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1",
     "redux": "^3.7.2",
-    "redux-devtools-extension": "^2.13.2"
+    "redux-devtools-extension": "^2.13.2",
+    "subscriptions-transport-ws": "^0.9.6"
   },
   "scripts": {
     "start": "react-scripts start",
