@@ -6,7 +6,6 @@ import { HttpLink } from "apollo-link-http";
 import { toIdValue } from "apollo-utilities";
 import { ApolloLink } from "apollo-link";
 import { InMemoryCache } from "apollo-cache-inmemory";
-// import { SubscriptionClient } from "subscriptions-transport-ws";
 import { WebSocketLink } from "apollo-link-ws";
 
 import { ChannelsListWithData } from "./components/ChannelsList";
@@ -42,10 +41,6 @@ const link = ApolloLink.split(
     uri: "http://localhost:3001/graphql"
   })
 );
-
-// const wsClient = new SubscriptionClient(`ws://localhost:3001/subscriptions`, {
-//   reconnect: true
-// });
 
 const client = new ApolloClient({
   link,
