@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { withRouter } from "react-router-dom";
-import { Button, Input, Col, message } from "antd";
+import { Button, Input, Row, Col, message } from "antd";
 
 import { channelDetailsQuery } from "./ChannelDetails";
 
@@ -78,22 +78,22 @@ class AddMessage extends Component {
 
   render() {
     return (
-      <InputGroup size="large">
-        <Col span={20}>
-          <Input
-            size="large"
-            placeholder="Please add message to this channel"
-            defaultValue={this.state.messageText}
-            value={this.state.messageText}
-            onChange={this.onChange}
-            onPressEnter={this.onCreate}
-          />
-        </Col>
-        <Col span={4}>
-          <Button type="primary" onClick={this.onCreate}>
-            Add Message
-          </Button>
-        </Col>
+      <InputGroup>
+        <Row type="flex" justify="center">
+          <Col span={20}>
+            <Input
+              style={{ width: "60%" }}
+              placeholder="Leave message to this channel"
+              defaultValue={this.state.messageText}
+              value={this.state.messageText}
+              onChange={this.onChange}
+              onPressEnter={this.onCreate}
+            />
+            <Button type="primary" onClick={this.onCreate}>
+              Add Message
+            </Button>
+          </Col>
+        </Row>
       </InputGroup>
     );
   }

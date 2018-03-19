@@ -7,3 +7,10 @@
 .optimistic {
   color: #eee;
 }
+
+.container {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #f44336;
+  border-radius: 1rem;
+}

@@ -1,6 +1,8 @@
 import React from "react";
 import { List } from "antd";
 
+import { MessageItem } from "./styled/typography";
+
 import AddMessageWithMutation from "./AddMessage";
 
 const MessageList = ({ messages }) => (
@@ -11,7 +13,7 @@ const MessageList = ({ messages }) => (
       dataSource={messages}
       renderItem={message => (
         <List.Item>
-          <List.Item.Meta title={message.text} />
+          <List.Item.Meta title={<MessageItem>{message.text}</MessageItem>} />
         </List.Item>
       )}
     />

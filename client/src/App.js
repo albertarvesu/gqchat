@@ -7,6 +7,7 @@ import { toIdValue } from "apollo-utilities";
 import { ApolloLink } from "apollo-link";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { WebSocketLink } from "apollo-link-ws";
+import { Row, Col } from "antd";
 
 import { ChannelsListWithData } from "./components/ChannelsList";
 import ChannelDetails from "./components/ChannelDetails";
@@ -55,12 +56,14 @@ class App extends Component {
     return (
       <ApolloProvider client={client}>
         <BrowserRouter>
-          <div className="App">
-            <Switch>
-              <Route exact path="/" component={ChannelsListWithData} />
-              <Route path="/channel/:channelId" component={ChannelDetails} />
-            </Switch>
-          </div>
+          <Row>
+            <Col span={12} offset={6} className="container">
+              <Switch>
+                <Route exact path="/" component={ChannelsListWithData} />
+                <Route path="/channel/:channelId" component={ChannelDetails} />
+              </Switch>
+            </Col>
+          </Row>
         </BrowserRouter>
       </ApolloProvider>
     );

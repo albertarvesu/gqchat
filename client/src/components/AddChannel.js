@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
-import { Button, Input, Col, message } from "antd";
+import { Button, Input, Row, Col, message } from "antd";
 
 import { channelsListQuery } from "./ChannelsList";
 
@@ -55,22 +55,22 @@ class AddChannel extends Component {
 
   render() {
     return (
-      <InputGroup size="large">
-        <Col span={20}>
-          <Input
-            size="large"
-            placeholder="Please enter new channel name"
-            defaultValue={this.state.channelName}
-            value={this.state.channelName}
-            onChange={this.onChange}
-            onPressEnter={this.onCreate}
-          />
-        </Col>
-        <Col span={4}>
-          <Button type="primary" onClick={this.onCreate}>
-            Create Channel
-          </Button>
-        </Col>
+      <InputGroup>
+        <Row type="flex" justify="center">
+          <Col span={20}>
+            <Input
+              style={{ width: "60%" }}
+              placeholder="Please enter new channel name"
+              defaultValue={this.state.channelName}
+              value={this.state.channelName}
+              onChange={this.onChange}
+              onPressEnter={this.onCreate}
+            />
+            <Button type="primary" onClick={this.onCreate}>
+              Create Channel
+            </Button>
+          </Col>
+        </Row>
       </InputGroup>
     );
   }

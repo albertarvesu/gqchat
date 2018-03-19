@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import MessageList from "./MessageList";
 import ChannelPreview from "./ChannelPreview";
 
+import { StyledLink, Header } from "./styled/typography";
+
 class ChannelDetails extends Component {
   componentWillMount() {
     this.props.data.subscribeToMore({
@@ -47,9 +49,9 @@ class ChannelDetails extends Component {
     return (
       <div>
         <Link to="/" className="navbar">
-          Home
+          <StyledLink>&lt; Back to Channels</StyledLink>
         </Link>
-        <div className="channelName">{channel.name}</div>
+        <Header>{channel.name}</Header>
         <MessageList messages={channel.messages} />
       </div>
     );
