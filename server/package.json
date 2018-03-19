@@ -6,7 +6,7 @@
   "author": "albertarvesu",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon index.js --exec babel-node --presets env,stage-2",
+    "start": "./node_modules/.bin/babel-node index.js",
     "start:dev":
       "nodemon --watch ./ --watch package.json index.js --exec babel-node --presets env,stage-2"
   },
