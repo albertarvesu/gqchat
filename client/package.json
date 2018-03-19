@@ -29,6 +29,7 @@
   "scripts": {
     "start": "react-scripts start",
     "start:dev": "react-app-env --env-file=config/development.env start",
+    "start:heroku": "react-app-env --env-file=config/heroku.env start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
